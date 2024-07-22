@@ -2,12 +2,13 @@ package com.enigma.gosling;
 
 import com.enigma.gosling.db.Jdbc;
 
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Menu {
     private final Scanner scanner = new Scanner(System.in);
 
-    public void displayMenu() {
+    public void displayMenu() throws SQLException {
         System.out.println("-".repeat(50));
         System.out.println("Selamat Datang di menu ToDo App");
         System.out.println("-".repeat(50));
@@ -54,7 +55,7 @@ public class Menu {
         }
     }
 
-    public void addTask() {
+    public void addTask() throws SQLException {
         String todo_name, priority, descripsion, is_active;
 
         do {
@@ -96,11 +97,11 @@ public class Menu {
         Jdbc.add(todo_name, priority, descripsion, is_active);
     }
 
-    public void viewTask() {
+    public void viewTask() throws SQLException {
         Jdbc.showAll();
     }
 
-    public void editTask() {
+    public void editTask() throws SQLException {
         String id, todo_name, priority, descripsion, is_active;
         System.out.println("Masukan id yang ingin di edit : ");
         id = scanner.nextLine();
@@ -145,7 +146,7 @@ public class Menu {
         }
     }
 
-    public void deleteTask() {
+    public void deleteTask() throws SQLException {
         String id;
         System.out.println("Enter ID : ");
         id = scanner.nextLine();
